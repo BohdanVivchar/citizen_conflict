@@ -1,0 +1,69 @@
+.btn_main {
+  clip-path: polygon(100% 0, 100% 65%, 88% 100%, 0 100%, 0 0);
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  padding: 0.625rem 0.6875rem;
+  line-height: 119%;
+  text-transform: uppercase;
+  transition: color 0.3s ease-in-out;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 90%;
+    background: black;
+    clip-path: polygon(100% 0, 100% 65%, 88% 100%, 0 100%, 0 0);
+    z-index: -2;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 95%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100%;
+    height: 100%;
+    background: red;
+    z-index: -1;
+    transition: bottom 0.3s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      bottom: 0%;
+    }
+  }
+}
+
+.btn_red {
+  clip-path: polygon(100% 0, 100% 65%, 88% 100%, 0 100%, 0 0);
+  background: white;
+  position: relative;
+  padding: 0.625rem 0.6875rem;
+  line-height: 119%;
+  text-transform: uppercase;
+  transition: color 0.3s ease-in-out;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 97%;
+    height: 90%;
+    background: red;
+    clip-path: polygon(100% 0, 100% 65%, 88% 100%, 0 100%, 0 0);
+    z-index: 1;
+  }
+  span {
+    position: relative;
+    z-index: 2;
+  }
+
+  &:hover {
+  }
+}

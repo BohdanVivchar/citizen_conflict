@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@use "./styles/fonts";
+@use "./styles/shared";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: "ClashDisplay";
+  color: white;
+  font-size: calc(16px + (100vw - 1520px) / 110);
+  @media (max-width: 756px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  background: #000;
+  overflow-x: hidden;
+}

@@ -1,0 +1,72 @@
+<section class="overflow-hidden">
+  <div class="flex flex-col items-center justify-center py-[4.3rem] gap-8">
+    <div class="max-w-[36.5625rem]">
+      <p
+        class="text-[2rem] font-semibold uppercase text-center leading-[119%] mb:text-2xl"
+      >
+        battle royal game with a
+        <span class="text-red">hunger games</span> twist
+      </p>
+    </div>
+    <div
+      class="flex leading-none text-xl text-nowrap w-[56.125rem] uppercase mb:flex-col mb:w-full mb:gap-3 mb:text-base mb:items-center"
+    >
+      <div class="border_left">
+        <p>24/7 live ai commentator</p>
+      </div>
+      <div class="border_right">
+        <p>watch-to-earn model</p>
+      </div>
+    </div>
+    <a class="btn_main" href="">
+      <p>more info</p>
+    </a>
+  </div>
+  <ul
+    class="list grid grid-cols-3 w-full aspect-[2.24387398] gap-[2.125rem] px-[2.8125rem] mb:hidden"
+    [ngClass]="{
+      active_left: selectedCard() === 1,
+      active_right: selectedCard() === 3
+    }"
+  >
+    @for(item of items; track item.id) {
+    <li
+      class="item bg-cover bg-center flex items-end py-3 px-5 cursor-pointer"
+      (mouseenter)="onHover(item.id)"
+      (mouseleave)="onHover(null)"
+      [ngStyle]="{
+        backgroundImage: 'url(' + item.image + ')',
+    }"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <div
+        class="py-[2.5rem] px-[2rem] flex flex-col gap-[1.8125rem] items-start transition-all duration-300"
+        [ngStyle]="selectedCard() === item.id ? { background: 'red' } : {}"
+      >
+        <p class="uppercase text-[2rem] leading-none">{{ item.title }}</p>
+        <div
+          class="h-0 mt-[-1.8125rem] overflow-hidden transition-all duration-300"
+          [ngStyle]="selectedCard() === item.id ? hoveredStyle() : {}"
+        >
+          <div #description class="flex flex-col gap-[1.8125rem] items-start">
+            <p class="font-openSans text-base font-normal lead-[1.625]">
+              {{ item.description }}
+            </p>
+            <a class="btn_red" href=""><span>more info</span></a>
+          </div>
+        </div>
+      </div>
+    </li>
+    }
+  </ul>
+  <app-mobile-swiper>
+    @for (item of items; track $index) {
+    <swiper-slide>
+      <div>{{ item.description }}</div>
+    </swiper-slide>
+    }
+  </app-mobile-swiper>
+</section>
