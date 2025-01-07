@@ -1,0 +1,48 @@
+<section class="pt-[11.5625rem] mb:pt-24 px-4">
+  <div class="flex flex-col gap-7 items-center mb-9">
+    <div class="">
+      <p class="title">Select a</p>
+      <p class="title text-red">game mode</p>
+    </div>
+    <a class="btn_main mb:hidden" href="">
+      <span>see all game modes</span>
+    </a>
+  </div>
+  <ul class="flex flex-col gap-[5.375rem] bottom_gradient mb:hidden">
+    @for (banner of banners; track $index) {
+    <li class="side_gradient">
+      <img
+        class="w-full h-full object-cover"
+        [src]="banner.image"
+        loading="lazy"
+        [alt]="banner.title"
+      />
+      <div class="pb-9 pl-[12.875rem] absolute bottom-0 left-0 text-2xl z-10">
+        <p>{{ banner.title.split(" ")[0] }}</p>
+        <p>{{ banner.title.split(" ")[1] }}</p>
+      </div>
+    </li>
+    }
+  </ul>
+  <div class="hidden mb:flex flex-col gap-[51px] items-center">
+    <app-mobile-swiper class="w-full block">
+      @for (banner of banners; track $index) {
+      <swiper-slide>
+        <div class="side_gradient h-[467px]">
+          <img
+            class="w-full h-full object-cover"
+            [src]="banner.image"
+            loading="lazy"
+            [alt]="banner.title"
+          />
+          <div class="pb-9 pl-[34px] absolute bottom-0 left-0 text-2xl z-10">
+            <p>{{ banner.title.split(" ")[0] }}</p>
+            <p>{{ banner.title.split(" ")[1] }}</p>
+          </div>
+        </div>
+      </swiper-slide>
+      }
+    </app-mobile-swiper>
+    <a class="btn_main" href=""> <span>see all game modes</span></a>
+  </div>
+</section>

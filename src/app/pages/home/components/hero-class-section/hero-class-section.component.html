@@ -1,0 +1,117 @@
+<section class="pt-[9.5625rem] mb:pt-24 px-4">
+  <div class="flex flex-col items-center gap-7 mb-11">
+    <div>
+      <p class="title">Select your</p>
+      <p class="title text-red">hero class</p>
+    </div>
+    <a class="btn_main mb:hidden" href="">
+      <span>see all heroes</span>
+    </a>
+  </div>
+  <ul class="list grid grid-cols-4 h-[37.5rem] px-8 gap-4 mb:hidden">
+    @for(hero of heroes; track hero.id; let i = $index){
+    <li
+      class="item h-full relative"
+      [ngClass]="{ active: selectedHero() === i }"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <div class="hero_bg absolute inset-0 w-full h-full"></div>
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          class="block object-cover w-full h-full object-top"
+          src="{{ hero.image }}"
+          alt="{{ hero.role }}"
+        />
+      </div>
+    </li>
+    }
+  </ul>
+  <div
+    class="flex items-center gap-[3.69rem] m-auto max-w-[74.22538rem] py-[5rem] mb:hidden"
+  >
+    <div class="icon_container cursor-pointer" (click)="prevSlide()">
+      <svg
+        class="w-4 h-[1.3365rem] fill-red"
+        [ngStyle]="{
+          opacity: selectedHero() === 0 ? 0.5 : 1,
+          cursor: selectedHero() === 0 ? 'not-allowed' : 'pointer'
+        }"
+      >
+        <use xlink:href="/icons/_sprite.svg#slider-arrow-left"></use>
+      </svg>
+    </div>
+    <div class="flex items-center gap-6 shrink-0">
+      <img
+        class="w-6 aspect-square"
+        [src]="heroes[selectedHero()].icon"
+        alt="icon"
+      />
+      <p class="uppercase text-2xl">{{ heroes[selectedHero()].role }}</p>
+    </div>
+    <div class="shrink">
+      <p class="description text-left">
+        {{ heroes[selectedHero()].description }}
+      </p>
+    </div>
+    <div class="icon_container" (click)="nextSlide()">
+      <svg
+        class="w-4 h-[1.3365rem] fill-red rotate-180 cursor-pointer"
+        [ngStyle]="{
+          opacity: selectedHero() === heroes.length - 1 ? 0.5 : 1,
+          cursor:
+            selectedHero() === heroes.length - 1 ? 'not-allowed' : 'pointer'
+        }"
+      >
+        <use xlink:href="/icons/_sprite.svg#slider-arrow-left"></use>
+      </svg>
+    </div>
+  </div>
+
+  <app-mobile-swiper
+    [slides]="[0, 1, 2, 3]"
+    (setSlideIndex)="setSlideIndex($event)"
+  >
+    @for(hero of heroes; track hero.id; let i = $index){
+    <swiper-slide class="h-[55dvh]">
+      <div
+        class="item h-full relative list"
+        [ngClass]="{ active: selectedHero() === i }"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="hero_bg absolute inset-0 w-full h-full"></div>
+        <div class="absolute inset-0 w-full h-full">
+          <img
+            class="block object-cover w-full h-full object-top"
+            src="{{ hero.image }}"
+            alt="{{ hero.role }}"
+          />
+        </div>
+      </div>
+    </swiper-slide>
+    }
+  </app-mobile-swiper>
+  <div class="hidden mb:flex flex-col mt-[3.5rem]">
+    <div class="flex items-center gap-6 mb-[1.75rem]">
+      <img
+        class="w-6 aspect-square"
+        [src]="heroes[selectedHero()].icon"
+        alt="icon"
+      />
+      <p class="uppercase text-2xl">
+        {{ heroes[selectedHero()].role }}
+      </p>
+    </div>
+    <p class="description text-left mb-[1.75rem]">
+      {{ heroes[selectedHero()].description }}
+    </p>
+    <a class="btn_main self-center" href="">
+      <span class="">see all heroes</span>
+    </a>
+  </div>
+</section>

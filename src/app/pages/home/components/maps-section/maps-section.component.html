@@ -1,0 +1,88 @@
+<section class="pt-[9.5625rem] mb:pt-24 px-4pt-[9.5625rem]">
+  <div class="mb-[2.19rem]">
+    <p class="title">explore</p>
+    <p class="title">the <span class="text-red">maps</span></p>
+  </div>
+  <ul
+    class="flex w-full justify-center gap-4 h-2 m-auto mb-[2.19rem] mb:hidden"
+  >
+    @for(map of maps; track $index; let i = $index) {
+    <li
+      class="pagination_item h-full"
+      [ngClass]="{ active: activeMap() === i }"
+      (click)="activeMap.set(i)"
+    ></li>
+    }
+  </ul>
+  <div class="h-[55dvh] top_btn_gradient mb:hidden">
+    <img
+      class="object-cover h-full w-full"
+      [src]="maps[activeMap()].image"
+      [alt]="maps[activeMap()].name"
+    />
+  </div>
+
+  <div
+    class="flex items-center gap-[3.69rem] m-auto max-w-[74.22538rem] py-[5rem] mb:hidden"
+  >
+    <div class="icon_container cursor-pointer" (click)="prevMap()">
+      <svg
+        class="w-4 h-[1.3365rem] fill-red"
+        [ngStyle]="{
+          opacity: activeMap() === 0 ? 0.5 : 1,
+          cursor: activeMap() === 0 ? 'not-allowed' : 'pointer'
+        }"
+      >
+        <use xlink:href="/icons/_sprite.svg#slider-arrow-left"></use>
+      </svg>
+    </div>
+    <div class="flex flex-col shrink-0">
+      <p class="uppercase text-2xl">{{ maps[activeMap()].number }}</p>
+      <p class="uppercase text-2xl">{{ maps[activeMap()].name }}</p>
+    </div>
+    <div class="shrink">
+      <p class="description text-left">
+        {{ maps[activeMap()].description }}
+      </p>
+    </div>
+    <div class="icon_container" (click)="nextMap()">
+      <svg
+        class="w-4 h-[1.3365rem] fill-red rotate-180 cursor-pointer"
+        [ngStyle]="{
+          opacity: activeMap() === maps.length - 1 ? 0.5 : 1,
+          cursor: activeMap() === maps.length - 1 ? 'not-allowed' : 'pointer'
+        }"
+      >
+        <use xlink:href="/icons/_sprite.svg#slider-arrow-left"></use>
+      </svg>
+    </div>
+  </div>
+
+  <app-mobile-swiper (setSlideIndex)="setMapIndex($event)">
+    @for(map of maps; track $index; let i = $index) {
+    <swiper-slide>
+      <div
+        class="h-[462px] top_btn_gradient"
+        [ngClass]="{ active: activeMap() === i }"
+      >
+        <img
+          class="object-cover h-full w-full"
+          [src]="map.image"
+          [alt]="map.name"
+        />
+      </div>
+    </swiper-slide>
+    }
+  </app-mobile-swiper>
+  <div class="hidden mb:flex flex-col gap-6 p-4">
+    <div class="flex flex-col shrink-0">
+      <p class="uppercase text-2xl">{{ maps[activeMap()].number }}</p>
+      <p class="uppercase text-2xl">{{ maps[activeMap()].name }}</p>
+    </div>
+    <div class="shrink">
+      <p class="description text-left">
+        {{ maps[activeMap()].description }}
+      </p>
+    </div>
+  </div>
+</section>

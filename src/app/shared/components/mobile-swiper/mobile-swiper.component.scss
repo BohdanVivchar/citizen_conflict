@@ -13,17 +13,19 @@ swiper-container {
     margin: 0 auto;
     width: fit-content;
     gap: 10px;
-    margin-top: 21px;
+    margin-bottom: 39px;
+    height: 8px;
 
     li {
-      width: 13px;
-      aspect-ratio: 1/1;
-      border: 1px solid var(--yellow-main);
-      border-radius: 50%;
+      width: 31px;
+      height: 100%;
+      border: 1px solid white;
+      transition: all 220ms ease-in-out;
     }
 
     .active {
-      background-color: var(--yellow-main);
+      background-color: #ff0116;
+      border: none;
     }
   }
 }

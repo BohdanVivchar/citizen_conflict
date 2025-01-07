@@ -1,0 +1,26 @@
+<section class="pt-[9.5625rem] mb:pt-24">
+  <div class="mb-[6rem]">
+    <p class="title">Select your</p>
+    <p class="title text-red">syndicate</p>
+  </div>
+  <ul class="flex flex-col gap-[5.375rem]">
+    @for (item of syndicates; track $index) {
+    <li class="item side_gradient">
+      <img
+        class="block object-cover w-full h-full object-top"
+        src="{{ item.image }}"
+        alt="{{ item.name }}"
+      />
+      <div class="description_container z-10 flex items-end p-4">
+        <img class="h-full" [src]="item.logo" alt="{{ item.name }}" />
+        <div class="flex flex-col gap-4">
+          <p class="uppercase text-2xl">{{ item.name }}</p>
+          <p class="description font-openSans text-left text-base">
+            {{ item.description }}
+          </p>
+        </div>
+      </div>
+    </li>
+    }
+  </ul>
+</section>

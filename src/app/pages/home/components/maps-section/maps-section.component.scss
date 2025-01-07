@@ -1,0 +1,11 @@
+.pagination_item {
+  border: 0.0625rem solid white;
+  width: 1.9375rem;
+  transition: all 220ms ease-in-out;
+  cursor: pointer;
+  &.active {
+    background-color: #ff0116;
+    border: none;
+    cursor: default;
+  }
+}

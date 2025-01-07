@@ -1,7 +1,9 @@
-<swiper-container #swiperMobile space-between="16">
-    <ng-content></ng-content>
-</swiper-container>
 <ul class="pagination_list">
-    <li *ngFor="let item of slides; let i = index" [ngClass]="{'pagination_item': true, 'active': i === activeSlide}">
-    </li>
+  <li
+    *ngFor="let item of slides; let i = index"
+    [ngClass]="{ pagination_item: true, active: i === activeSlide }"
+  ></li>
 </ul>
+<swiper-container #swiperMobile space-between="16">
+  <ng-content></ng-content>
+</swiper-container>

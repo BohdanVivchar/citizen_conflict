@@ -4,7 +4,9 @@ import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
+  EventEmitter,
   Input,
+  Output,
   ViewChild,
 } from '@angular/core';
 
@@ -22,12 +24,20 @@ export class MobileSwiperComponent implements AfterViewInit {
   @Input() slides: any[] = [];
   activeSlide = 0;
 
+  @Output() setSlideIndex = new EventEmitter<number>();
+
   ngAfterViewInit(): void {
     if (this.swiperEl && this.swiperEl.nativeElement) {
       this.swiperEl.nativeElement.addEventListener(
         'swiperslidechange',
         this.onSlideChange.bind(this)
       );
+      setTimeout(() => {
+        this.slides = Array.from(
+          { length: this.swiperEl.nativeElement.swiper.slides.length },
+          (_, i) => i
+        );
+      });
     }
   }
 
@@ -44,6 +54,7 @@ export class MobileSwiperComponent implements AfterViewInit {
     const [swiper] = event.detail;
     this.swiper = swiper;
     this.updateSlides();
+    this.setSlideIndex.emit(this.activeSlide);
   }
 
   private updateSlides(): void {

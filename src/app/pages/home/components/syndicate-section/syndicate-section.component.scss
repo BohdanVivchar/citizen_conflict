@@ -1,0 +1,12 @@
+.item {
+  position: relative;
+}
+
+.description_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  transform: translateX(-15%);
+}
