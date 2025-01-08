@@ -1,0 +1,16 @@
+<div
+  class="item_container border border-[#ffffff33] py-[3.2rem] px-[4rem] flex flex-col gap-4 relative mb:py-10 mb:px-6"
+>
+  <div class="span_corners mb:hidden">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <p *ngIf="title" class="text-2xl">
+    {{ title }}
+  </p>
+  <p *ngIf="description" class="description text-left">
+    {{ description }}
+  </p>
+</div>

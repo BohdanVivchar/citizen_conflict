@@ -1,0 +1,9 @@
+<ul class="flex items-center gap-6">
+  @for (item of socials; track $index) {
+  <li>
+    <a [href]="item.link"
+      ><img class="h-5" [src]="item.icon" alt="social-icon"
+    /></a>
+  </li>
+  }
+</ul>

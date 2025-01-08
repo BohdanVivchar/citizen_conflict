@@ -1,0 +1,91 @@
+<footer class="bg-red pt-[5rem] px-[4.2rem] pb-[2.76rem] mb:px-6">
+  <div class="flex justify-between items-center mb:flex-col mb:gap-6">
+    <ul class="grid grid-cols-3 grid-rows-4 gap-x-4 mb:hidden">
+      @for(link of links; track link.name){
+      <li>
+        <a
+          class="font-openSans font-light text-xs leading-8"
+          [href]="link.link"
+          >{{ link.name }}</a
+        >
+      </li>
+      }
+    </ul>
+    <div class="flex items-center gap-4">
+      <img
+        class="block w-24 drop-shadow-2xl"
+        src="/images/token.png"
+        alt="token"
+      />
+      <div>
+        <p class="opacity-50 text-xs">$QORPO Price</p>
+        <p class="text-2xl">$88.88</p>
+      </div>
+    </div>
+    <ul class="grid grid-cols-2 gap-4 mb:hidden">
+      @for(coin of coins; track coin.name){
+      <li class="flex items-center gap-2">
+        <img class="w-7" [src]="coin.icon" [alt]="coin.name" />
+        <p class="font-openSans font-light text-xs">{{ coin.name }}</p>
+      </li>
+      }
+    </ul>
+    <div class="flex gap-10 items-start mb:hidden">
+      <img
+        class="w-14 h-auto"
+        src="/images/in-game-purchases.png"
+        loading="lazy"
+        alt="logo"
+      />
+      <img
+        class="w-14 h-auto"
+        src="/images/violence.png"
+        loading="lazy"
+        alt="logo"
+      />
+      <img
+        class="w-14 h-auto"
+        src="/images/pegi.png"
+        loading="lazy"
+        alt="logo"
+      />
+    </div>
+  </div>
+  <div class="flex justify-center py-16 mb:py-11">
+    <img class="w-[71%] mb:w-full" src="/images/cc-logo.svg" alt="" />
+  </div>
+  <div class="flex justify-between items-center mb:flex-col mb:gap-6">
+    <div class="hidden w-[100px] mb:flex flex-col gap-1">
+      <img
+        class="w-full h-auto"
+        src="/images/pegi.png"
+        loading="lazy"
+        alt="logo"
+      />
+      <div class="flex items-center w-full gap-1">
+        <div>
+          <img
+            class="flex-1 h-auto"
+            src="/images/violence.png"
+            loading="lazy"
+            alt="logo"
+          />
+        </div>
+        <div>
+          <img
+            class="flex-1 h-auto"
+            src="/images/in-game-purchases.png"
+            loading="lazy"
+            alt="logo"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="opacity-50 flex items-center gap-4 text-xs">
+      <p>© 2025, QORPO Game Studio</p>
+      <!-- <a href="">Terms of Service</a>
+      <a href="">Privacy Policy</a> -->
+    </div>
+    <app-socials></app-socials>
+  </div>
+</footer>

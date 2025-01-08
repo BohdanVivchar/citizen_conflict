@@ -1,0 +1,27 @@
+.span_corners {
+  background: radial-gradient(
+    circle,
+    rgba(255, 1, 22, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  > span {
+    opacity: 0;
+    --position: 12%;
+  }
+  &:hover {
+    > span {
+      opacity: 1;
+      --position: 0%;
+    }
+  }
+}
+
+.item_container {
+  &:hover {
+    .span_corners {
+      opacity: 1;
+    }
+  }
+}

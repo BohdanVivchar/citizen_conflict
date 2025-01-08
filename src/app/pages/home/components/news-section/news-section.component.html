@@ -1,0 +1,26 @@
+<section class="px-8 mb:px-4 pb-[10rem] mb:pb-[6rem]">
+  <p #title class="title mb-8">
+    what is <br />
+    <span class="text-red">new</span>
+  </p>
+  <ul #cards class="flex flex-col gap-y-[2.4rem] mb:hidden">
+    @for(item of news; track $index){
+    <li>
+      <app-news-item
+        [title]="item.title"
+        [description]="item.description"
+      ></app-news-item>
+    </li>
+    }
+  </ul>
+  <app-mobile-swiper>
+    @for(item of news; track $index){
+    <swiper-slide>
+      <app-news-item
+        [title]="item.title"
+        [description]="item.description"
+      ></app-news-item>
+    </swiper-slide>
+    }
+  </app-mobile-swiper>
+</section>

@@ -1,5 +1,41 @@
 .item {
   position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 35%;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 25%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    transition: 0.42s ease-in-out;
+    @media screen and (max-width: 768px) {
+      width: 70%;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 19%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+  }
+  &:hover {
+    &::before {
+      width: 70%;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 25%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+    .description_container {
+      transform: translateX(-15%);
+      opacity: 1;
+    }
+  }
 }
 
 .description_container {
@@ -8,5 +44,13 @@
   left: 0;
   width: 60%;
   height: 100%;
-  transform: translateX(-15%);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.65s ease-in-out, opacity 1s ease-in-out;
+
+  @media screen and (max-width: 768px) {
+    width: 85%;
+    transform: translateX(-50%);
+    opacity: 1;
+  }
 }

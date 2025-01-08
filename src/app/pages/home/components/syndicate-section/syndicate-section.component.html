@@ -1,11 +1,11 @@
-<section class="pt-[9.5625rem] mb:pt-24">
-  <div class="mb-[6rem]">
+<section class="pt-[9.5625rem] pb-44 mb:pt-24">
+  <div #title class="mb-[6rem] mb:mb-7">
     <p class="title">Select your</p>
     <p class="title text-red">syndicate</p>
   </div>
-  <ul class="flex flex-col gap-[5.375rem]">
+  <ul class="flex flex-col gap-[5.375rem] mb:hidden">
     @for (item of syndicates; track $index) {
-    <li class="item side_gradient">
+    <li #bannerRef class="item side_gradient">
       <img
         class="block object-cover w-full h-full object-top"
         src="{{ item.image }}"
@@ -13,8 +13,16 @@
       />
       <div class="description_container z-10 flex items-end p-4">
         <img class="h-full" [src]="item.logo" alt="{{ item.name }}" />
+
         <div class="flex flex-col gap-4">
-          <p class="uppercase text-2xl">{{ item.name }}</p>
+          <p
+            class="uppercase text-2xl text-[#BDFF00]"
+            [ngStyle]="{
+              color: generateColorByIndex($index),
+            }"
+          >
+            {{ item.name }}
+          </p>
           <p class="description font-openSans text-left text-base">
             {{ item.description }}
           </p>
@@ -23,4 +31,41 @@
     </li>
     }
   </ul>
+  <app-mobile-swiper (setSlideIndex)="setMapIndex($event)">
+    @for(item of syndicates; track $index) {
+    <swiper-slide>
+      <div class="h-[467px] overflow-hidden relative side_gradient item">
+        <img
+          class="block object-cover w-full h-full object-[68%]"
+          [ngStyle]="
+            {
+              'object-position': $index === 2 ? 'center' : '68%',
+            }"
+          src="{{ item.image }}"
+          alt="{{ item.name }}"
+        />
+        <div class="description_container z-10 flex items-end p-4">
+          <img class="h-full" [src]="item.logo" alt="{{ item.name }}" />
+        </div>
+      </div>
+    </swiper-slide>
+    }
+  </app-mobile-swiper>
+  <div class="hidden mb:flex flex-col gap-6 p-4 pt-9">
+    <div class="flex flex-col shrink-0">
+      <p
+        class="uppercase text-2xl"
+        [ngStyle]="{
+        color: generateColorByIndex(activeSlideIndex()),
+      }"
+      >
+        {{ syndicates[activeSlideIndex()].name }}
+      </p>
+    </div>
+    <div class="shrink">
+      <p class="description text-left">
+        {{ syndicates[activeSlideIndex()].description }}
+      </p>
+    </div>
+  </div>
 </section>

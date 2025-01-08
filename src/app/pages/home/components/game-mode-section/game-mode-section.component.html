@@ -1,5 +1,5 @@
-<section class="pt-[11.5625rem] mb:pt-24 px-4">
-  <div class="flex flex-col gap-7 items-center mb-9">
+<section class="pt-[8.5625rem] mb:pt-24 px-4">
+  <div #title class="flex flex-col gap-7 items-center mb-11">
     <div class="">
       <p class="title">Select a</p>
       <p class="title text-red">game mode</p>
@@ -10,7 +10,7 @@
   </div>
   <ul class="flex flex-col gap-[5.375rem] bottom_gradient mb:hidden">
     @for (banner of banners; track $index) {
-    <li class="side_gradient">
+    <li #bannerRef class="side_gradient h-[25rem]">
       <img
         class="w-full h-full object-cover"
         [src]="banner.image"

@@ -6,6 +6,8 @@ import { HeroClassSectionComponent } from './components/hero-class-section/hero-
 import { GameModeSectionComponent } from './components/game-mode-section/game-mode-section.component';
 import { MapsSectionComponent } from './components/maps-section/maps-section.component';
 import { SyndicateSectionComponent } from './components/syndicate-section/syndicate-section.component';
+import { TokenSectionComponent } from './components/token-section/token-section.component';
+import { NewsSectionComponent } from './components/news-section/news-section.component';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +19,8 @@ import { SyndicateSectionComponent } from './components/syndicate-section/syndic
     GameModeSectionComponent,
     MapsSectionComponent,
     SyndicateSectionComponent,
+    TokenSectionComponent,
+    NewsSectionComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
