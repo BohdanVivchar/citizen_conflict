@@ -10,13 +10,15 @@
   </div>
   <ul class="flex flex-col gap-[5.375rem] bottom_gradient mb:hidden">
     @for (banner of banners; track $index) {
-    <li #bannerRef class="side_gradient h-[25rem]">
-      <img
-        class="w-full h-full object-cover"
-        [src]="banner.image"
-        loading="lazy"
-        [alt]="banner.title"
-      />
+    <li #bannerRef class="h-[25rem] relative">
+      <div class="absolute inset-0 w-full h-full" [ngStyle]="mask()">
+        <img
+          class="w-full h-full object-cover"
+          [src]="banner.image"
+          loading="lazy"
+          [alt]="banner.title"
+        />
+      </div>
       <div class="pb-9 pl-[12.875rem] absolute bottom-0 left-0 text-2xl z-10">
         <p>{{ banner.title.split(" ")[0] }}</p>
         <p>{{ banner.title.split(" ")[1] }}</p>

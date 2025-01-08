@@ -12,10 +12,10 @@ export class HeroSectionComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     gsap.from(this.title.nativeElement, {
-      duration: 1,
+      duration: 3,
       opacity: 0,
-      y: '100%',
-      ease: '',
+      delay: 0.5,
+      ease: 'power4.out',
     });
   }
 }

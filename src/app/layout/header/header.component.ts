@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit {
+  @ViewChild('header') header!: ElementRef;
   links = [
     {
       title: 'home',
@@ -27,4 +29,12 @@ export class HeaderComponent {
       link: '#',
     },
   ];
+
+  ngAfterViewInit(): void {
+    gsap.to(this.header.nativeElement, {
+      duration: 1,
+      y: '0%',
+      ease: 'power4.out',
+    });
+  }
 }
