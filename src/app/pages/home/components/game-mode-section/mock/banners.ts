@@ -9,7 +9,7 @@ export const BANNERS = [
   },
   {
     image: '/images/home-page/game-mode-banners/banner-3.png',
-    title: 'Battleroyal',
+    title: 'Battle Royale',
   },
   {
     image: '/images/home-page/game-mode-banners/banner-4.png',

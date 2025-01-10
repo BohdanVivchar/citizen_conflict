@@ -28,9 +28,14 @@ export class HungerGameSectionComponent implements AfterViewInit {
   @ViewChildren('description') description?: QueryList<
     ElementRef<HTMLDivElement>
   >;
+
+  @ViewChildren('descriptionMob') descriptionMob?: QueryList<
+    ElementRef<HTMLDivElement>
+  >;
   items = twists;
   selectedCard = signal<null | number>(null);
   hoveredStyle = signal({});
+  hoveredStyleMob = signal({});
 
   constructor(public animationService: GsapAnimationService) {}
 
@@ -49,6 +54,9 @@ export class HungerGameSectionComponent implements AfterViewInit {
     this.selectedCard.set(id);
     const height =
       this.description?.toArray()[id - 1].nativeElement.clientHeight;
+    const heightMob =
+      this.descriptionMob?.toArray()[id - 1].nativeElement.clientHeight;
     this.hoveredStyle.set({ height: `${height}px`, marginTop: '0rem' });
+    this.hoveredStyleMob.set({ height: `${heightMob}px`, marginTop: '0rem' });
   }
 }

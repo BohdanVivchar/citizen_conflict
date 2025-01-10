@@ -7,7 +7,7 @@
       <p
         class="text-[2rem] font-semibold uppercase text-center leading-[119%] mb:text-2xl"
       >
-        battle royal game with a
+        battle royale game with a
         <span class="text-red">hunger games</span> twist
       </p>
     </div>
@@ -70,20 +70,28 @@
     @for (item of items; track $index) {
     <swiper-slide>
       <div
-        class="w-full h-[600px] flex items-end p-[9px] bg-top bg-cover"
+        (mouseenter)="onHover(item.id)"
+        (mouseleave)="onHover(null)"
+        class="w-full h-[600px] flex items-end p-[9px] bg-top bg-cover item"
         [ngStyle]="{
         backgroundImage: 'url(' + item.image + ')',
     }"
       >
-        <div class="bg-red py-[22px] px-[28px]">
+        <div
+          class="py-[22px] px-[28px]"
+          [ngStyle]="selectedCard() === item.id ? { background: 'red' } : {}"
+        >
           <p class="uppercase text-[1.7rem] leading-none mb-[1.8125rem]">
             {{ item.title }}
           </p>
           <div
-            class="overflow-hidden transition-all duration-300"
-            [ngStyle]="selectedCard() === item.id ? hoveredStyle() : {}"
+            class="h-0 mt-[-1.8125rem] overflow-hidden transition-all duration-300"
+            [ngStyle]="selectedCard() === item.id ? hoveredStyleMob() : {}"
           >
-            <div #description class="flex flex-col gap-[1.8125rem] items-start">
+            <div
+              #descriptionMob
+              class="flex flex-col gap-[1.8125rem] items-start"
+            >
               <p class="font-openSans text-base font-normal lead-[1.625]">
                 {{ item.description }}
               </p>
